@@ -12,7 +12,7 @@ class FirstApp extends StatefulWidget {
 class _FirstAppState extends State<FirstApp> {
   final question = const [
     {
-      'questionText': 'what is your favourite color ?',
+      'questionText': 'What is your favourite color?',
       'answers': [
         {'text': 'red', 'score': 9},
         {'text': 'blue', 'score': 8},
@@ -21,7 +21,7 @@ class _FirstAppState extends State<FirstApp> {
       ]
     },
     {
-      'questionText': 'who is your favourite teacher ?',
+      'questionText': 'Who is your favourite teacher?',
       'answers': [
         {'text': 'tim', 'score': 9},
         {'text': 'paul', 'score': 8},
@@ -30,7 +30,7 @@ class _FirstAppState extends State<FirstApp> {
       ]
     },
     {
-      'questionText': 'what is your favourite game ?',
+      'questionText': 'What is your favourite game?',
       'answers': [
         {'text': 'table tennis', 'score': 9},
         {'text': 'hockey', 'score': 8},
@@ -67,15 +67,16 @@ class _FirstAppState extends State<FirstApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('My App'),
-        ),
+        // appBar: AppBar(
+        //   title: Text('My App'),
+        // ),
         body: _questionIndex < question.length
             ? Quiz(
                 question: question,
                 questionIndex: _questionIndex,
                 answerQuestion: _answerQuestion)
             : Results(_totalScore, _resetGame),
+            backgroundColor: const Color(0xFF252C4A),
       ),
     );
   }
