@@ -9,11 +9,13 @@ class Questions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.only(top: 100, bottom: 300,),
+      padding: EdgeInsets.symmetric(horizontal: 5),
       child: Text(
         questionText,
-        style: TextStyle(fontSize: 28),
+        style: TextStyle(fontSize: 25,color: const Color(0xFFEFEFF2)),
         textAlign: TextAlign.center,
+        
       ),
     );
   }
