@@ -9,9 +9,14 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      color: Colors.green[100],
+      padding: EdgeInsets.all(5),
+      width: 350,
+      height: 50,
+      // color: Colors.green[100],
       child: RaisedButton(
+        shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
         child: Text(answerText),
         textColor: Colors.white,
         onPressed: handler,

@@ -8,13 +8,13 @@ class Results extends StatelessWidget {
   String get resultValue {
     String resultText;
     if (resultScore <= 10) {
-      resultText = 'you are good';
+      resultText = 'You are good';
     } else if (resultScore <= 15) {
-      resultText = 'you are average';
+      resultText = 'You are average';
     } else if (resultScore <= 25) {
-      resultText = 'you are not bad';
+      resultText = 'You are not bad';
     } else {
-      resultText = 'you are bad';
+      resultText = 'You are bad';
     }
     return resultText;
   }
@@ -24,18 +24,23 @@ class Results extends StatelessWidget {
     return Center(
       child: Column(
         children: <Widget>[
-          Text(
-            resultValue,
-            style: TextStyle(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: Text(
+              resultValue,
+              style: TextStyle(
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+                color: Colors.white
+              ),
             ),
           ),
-          FlatButton(
+          SizedBox(height: 460,),
+          FlatButton(color: Colors.blue,
             onPressed: resetHandler,
             child: Text(
-              'play again !! ',
-              style: TextStyle(color: Colors.red),
+              'Play again !! ',
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],
