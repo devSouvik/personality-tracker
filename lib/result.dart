@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class Results extends StatelessWidget {
   final int resultScore;
   final Function resetHandler;
-  Results(this.resultScore, this.resetHandler);
+  final Map<Object, Object> yourAnswer;
+  Results(this.resultScore, this.resetHandler, this.yourAnswer);
 
   String get resultValue {
     String resultText;
@@ -21,22 +22,39 @@ class Results extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> _questions = [];
+    List<String> _answers = [];
+    yourAnswer.forEach((key, value) {
+      _questions.add(key);
+      _answers.add(value);
+    });
+    print(_questions);
+    print(_answers);
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 100),
-            child: Text(
-              resultValue,
-              style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
-              ),
+          Text(
+            resultValue,
+            style: TextStyle(
+                fontSize: 36, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            height: MediaQuery.of(context).size.height / 2.5,
+            child: ListView.builder(
+              itemCount: yourAnswer.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: ListTile(
+                      title: Text(_questions[index]),
+                      subtitle: Text(_answers[index])),
+                );
+              },
             ),
           ),
-          SizedBox(height: 460,),
-          FlatButton(color: Colors.blue,
+          FlatButton(
+            color: Colors.blue,
             onPressed: resetHandler,
             child: Text(
               'Play again !! ',
