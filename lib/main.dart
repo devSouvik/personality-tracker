@@ -41,7 +41,7 @@ class _FirstAppState extends State<FirstApp> {
   ];
   var _questionIndex = 0;
   int _totalScore = 0;
-
+  Map<Object, Object> _yourAnswer = {};
   void _resetGame() {
     setState(() {
       _questionIndex = 0;
@@ -49,14 +49,16 @@ class _FirstAppState extends State<FirstApp> {
     });
   }
 
-  void _answerQuestion(int score) {
+  void _answerQuestion(int score, Map<Object, Object> yourAnswer) {
     _totalScore += score;
+    _yourAnswer.addAll(yourAnswer);
     setState(() {
       _questionIndex += 1;
     });
     print(_questionIndex);
     if (_questionIndex < question.length) {
       print('you got more question on the way !! ');
+      print(_yourAnswer.toString());
     } else {
       print('you did it');
     }
@@ -67,16 +69,13 @@ class _FirstAppState extends State<FirstApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // appBar: AppBar(
-        //   title: Text('My App'),
-        // ),
         body: _questionIndex < question.length
             ? Quiz(
                 question: question,
                 questionIndex: _questionIndex,
                 answerQuestion: _answerQuestion)
-            : Results(_totalScore, _resetGame),
-            backgroundColor: const Color(0xFF252C4A),
+            : Results(_totalScore, _resetGame, _yourAnswer),
+        backgroundColor: const Color(0xFF252C4A),
       ),
     );
   }
