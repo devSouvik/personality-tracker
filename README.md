@@ -2,7 +2,7 @@
 
 sample Flutter project.
 
-still in it's development stage
+still in it's developmental stage
 
 # want to contribute ??
 <br> 1- install android studio in your device </br>
